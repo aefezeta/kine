@@ -2,7 +2,7 @@
 
 project = 'kine'
 copyright = '2026, Antonio Fuentes'
-author = 'Antonio Fuentes et al.'
+# author = 'Antonio Fuentes et al.'
 
 release =  "0.0.1"
 version =  "0.0.1"
@@ -35,7 +35,7 @@ html_theme = 'sphinx_book_theme'
 html_title = "kine"
 # html_logo = "path/to/myimage.png"
 html_theme_options = {
-    "github_url": "https://github.com/aefezeta/kine",
+    # "github_url": "https://github.com/aefezeta/kine",
     "repository_url": "https://github.com/aefezeta/kine",
     "use_repository_button": True,
 #    "use_source_button": True,
