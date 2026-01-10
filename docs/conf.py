@@ -25,7 +25,7 @@ intersphinx_mapping = {
 }
 intersphinx_disabled_domains = ['std']
 
-# autodoc_mock_imports = ["bowshockpy"]
+# autodoc_mock_imports = ["kine"]
 
 templates_path = ['_templates']
 
