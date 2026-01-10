@@ -2,15 +2,19 @@
 
 _A Python package for the video reconstruction of variable (and static) astronomical objects_
 
-`kine` is a Python package designed for the video reconstruction of variable and sparse VLBI data by modeling the time-dependent brightness distribution of the observed source through a _Neural Field_.
+`kine` is a Python package designed for the video reconstruction of variable and sparse VLBI data by modeling the time-dependent brightness distribution of the observed source through a completely unsupervised _Neural Field_.
 
 ![kine video reconstruction from EHT-like data](gif/kine_EHT.gif)
 
 ## Documentation
 
-Documentation can be found here.
+Documentation will be added here.
 
 Some example scripts on how to use `kine` can be found in [examples](https://github.com/aefezeta/kine/tree/main/examples).
+
+## Installation
+
+`kine` relies on the `JAX` library for GPU computations and requires a careful installation of CUDA-related packages and others. For reference, a working conda environment can be found in [environment.yaml](https://github.com/aefezeta/kine/tree/main/environment.yaml). Detailed instructions on the installation will be provided in the near future.
 
 ## Developers
 
