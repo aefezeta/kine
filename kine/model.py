@@ -113,8 +113,10 @@ class NeuralField(nn.Module):
             Predicted full pol. emission at coordinates (x, y, t).
         """
         # Layer creation functions
-        dense_layer = partial(nn.Dense,
-                              kernel_init=nn.initializers.he_uniform())
+        dense_layer = partial(
+            nn.Dense,
+            kernel_init=nn.initializers.he_uniform()
+        )
         bnorm_layer = partial(nn.BatchNorm, use_running_average=not train)
         # Positional Encoding
         x = posenc(x, self.posenc_deg)
@@ -192,8 +194,10 @@ class NeuralFieldPol(nn.Module):
             Predicted lin. pol. emission at coordinates (x, y, t).
         """
         # Layer creation functions
-        dense_layer = partial(nn.Dense,
-                              kernel_init=nn.initializers.he_uniform())
+        dense_layer = partial(
+            nn.Dense,
+            kernel_init=nn.initializers.he_uniform()
+        )
         bnorm_layer = partial(nn.BatchNorm, use_running_average=not train)
         # Positional Encoding
         x = posenc(x, self.posenc_deg)
