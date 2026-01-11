@@ -1,14 +1,18 @@
 # kine
 
-`kine` is a Python package designed for the video reconstruction of variable and sparse interferometric data by modeling the time-dependent brightness distribution of the observed source through a completely unsupervised _Neural Field_.
+`kine` is a Python package designed for video reconstruction of variable and sparse interferometric data by modeling the time-dependent brightness distribution of the observed source through a fully unsupervised _Neural Field_.
 
 ![kine video reconstruction from EHT-like data](gif/kine_EHT.gif)
 
+### Features
+
+`kine` currently supports full polarimetric video and image reconstruction, simultaneous static and dynamic video decomposition, simultaneous fitting of complex telescope gains, and GPU-based Non-Uniform Fast Fourier Transform (NUFFT) computations.
+
 ## Documentation
 
-Documentation will be added here.
+Full documentation will be available soon.
 
-Some example scripts on how to use `kine` can be found in [examples](https://github.com/aefezeta/kine/tree/main/examples).
+Some (quite comprehensive) example scripts on how to use `kine` can be found in [examples](https://github.com/aefezeta/kine/tree/main/examples).
 
 ## Installation
 
@@ -24,8 +28,5 @@ Some example scripts on how to use `kine` can be found in [examples](https://git
  ## Citation
 
  If you use `kine` in your publication, please cite:
-  - Foschi, M., Zhao, B., Fuentes, A. et al. "Video reconstruction of
-    variable interferometric observations with neural fields." Under rev.
-    in Nature (2026).
-  - Fuentes, A., Foschi, M. et al. "Validation of horizon-scale
-    Sagittarius A* video reconstruction with kine" Under rev. (2026).
+1. Foschi, M., Zhao, B., Fuentes, A. et al. "Video reconstruction of variable interferometric observations with neural fields." Under rev. in Nature (2026).
+2. Fuentes, A., Foschi, M. et al. "Validation of horizon-scale Sagittarius A* video reconstructions with kine" Under rev. (2026).
