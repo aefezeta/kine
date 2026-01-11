@@ -19,8 +19,8 @@ Some (quite comprehensive) example scripts on how to use `kine` can be found in 
 Diagnostic plots and results can be found as well in [examples/output/](https://github.com/aefezeta/kine/tree/main/examples/output).
 
 <p align="middle">
-  <img src="examples/output/out_pol.gif" width="150" /> 
-  <img src="examples/output/out.gif" width="450" />
+  <img src="examples/output/out.gif" width="570" />
+  <img src="examples/output/out_pol.gif" width="190" /> 
 </p>
 
 ## Installation
