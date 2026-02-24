@@ -45,3 +45,4 @@ nposenc: [4, 0, 0]
 depth: 4
 width: 256
 outshift: 10
+scaling_ml: 0.75

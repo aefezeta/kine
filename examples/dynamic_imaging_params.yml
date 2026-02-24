@@ -75,3 +75,4 @@ s_depth: 4
 d_depth: 6
 width: 256
 outshift: 10
+scaling_i: 1

@@ -23,7 +23,7 @@ and the EVPA having Stokes I fixed from a prev. Stokes I reconstruction.
 
 References:
     [1] Fuentes, A., Foschi, M. et al., "Validation of horizon-scale
-    Sagittarius A* video reconstruction with kine" Under rev. (2026).
+    Sagittarius A* video reconstruction with kine" In prep. (2026).
 """
 
 import queue
@@ -163,6 +163,7 @@ network = mo.NeuralFieldPol(
     activ=sharpgelu,
     outactiv=nn.sigmoid,
     outshift=h.outshift,
+    scaling_ml=h.scaling_ml
 )
 batch_stats = network.init(
     rkey,

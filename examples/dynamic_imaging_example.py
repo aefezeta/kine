@@ -28,7 +28,7 @@ The imaging process has 3 steps:
 
 References:
     [1] Fuentes, A., Foschi, M. et al., "Validation of horizon-scale
-    Sagittarius A* video reconstruction with kine" Under rev. (2026).
+    Sagittarius A* video reconstruction with kine" In prep. (2026).
 """
 
 import queue
@@ -187,7 +187,7 @@ s_network = mo.NeuralField(
     activ=nn.gelu,
     outactiv=nn.sigmoid,
     outshift=h.outshift,
-    scaling=h.scaling
+    scaling_i=h.scaling_i
 )
 s_batch_stats = s_network.init(
     rkey,
@@ -221,7 +221,7 @@ d_network = mo.NeuralField(
     activ=nn.gelu,
     outactiv=nn.sigmoid,
     outshift=h.outshift,
-    scaling=h.scaling
+    scaling_i=h.scaling_i
 )
 d_batch_stats = d_network.init(
     rkey,

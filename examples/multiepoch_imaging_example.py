@@ -23,8 +23,7 @@ of source monitoring with programs like MOJAVE, BEAM-ME, or ngEHT (simulated).
 
 References:
     [1] Foschi, M., Zhao, B., Fuentes, A. et al., "Video reconstruction of
-    variable interferometric observations with neural fields." Under rev.
-    in Nature (2026).
+    variable interferometric observations with neural fields." Under rev. (2026)
 """
 
 import glob
@@ -207,7 +206,7 @@ network = mo.NeuralField(
     activ=nn.gelu,
     outactiv=nn.softplus,
     outshift=h.outshift,
-    scaling=h.scaling
+    scaling_i=h.scaling_i
 )
 batch_stats = network.init(
     rkey,

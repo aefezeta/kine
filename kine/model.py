@@ -87,7 +87,8 @@ class NeuralField(nn.Module):
         outshift: Output activation function shift
         do_bnorm: If true, do batch normalization
         skipat: Skip connection layer
-        scaling: Sigmoid scaling ([0, 1] -> [0, scaling])
+        scaling_i: Sigmoid scaling for Stokes I ([0, 1] -> [0, scaling_i])
+        scaling_ml: Sigmoid scaling for ml ([0, 1] -> [0, scaling_ml])
     """
 
     posenc_deg: tuple[int] = (0, 0, 0)
@@ -99,7 +100,8 @@ class NeuralField(nn.Module):
     outshift: int = 10
     do_bnorm: bool = True
     skipat: int = 0
-    scaling: float = 1.0
+    scaling_i: float = 1.0
+    scaling_ml: float = 1.0
 
     @nn.compact
     def __call__(self, x: ArrayLike, train: bool) -> Array:
@@ -141,10 +143,12 @@ class NeuralField(nn.Module):
         # x[...,3] = cos(2xi)
         # x[...,4] = circular pol. fraction mc
         x = x.at[..., 0].set(
-            self.outactiv(x[..., 0] - self.outshift) * self.scaling
+            self.outactiv(x[..., 0] - self.outshift) * self.scaling_i
         )
         if self.outdim >= 4:
-            x = x.at[..., 1].set(nn.sigmoid(x[..., 1] - self.outshift) * 0.75)
+            x = x.at[..., 1].set(
+                nn.sigmoid(x[..., 1] - self.outshift) * self.scaling_ml
+            )
             x = x.at[..., 2].set((nn.sigmoid(x[..., 2]) - 0.5) * 2)
             x = x.at[..., 3].set((nn.sigmoid(x[..., 3]) - 0.5) * 2)
         if self.outdim == 5:
@@ -170,6 +174,7 @@ class NeuralFieldPol(nn.Module):
         outshift: Output activation function shift
         do_bnorm: If true, do batch normalization
         skipat: Skip connection layer
+        scaling_ml: Sigmoid scaling for ml ([0, 1] -> [0, scaling_ml])
     """
 
     posenc_deg: tuple[int] = (0, 0, 0)
@@ -181,6 +186,7 @@ class NeuralFieldPol(nn.Module):
     outshift: int = 10
     do_bnorm: bool = True
     skipat: int = 0
+    scaling_ml: float = 1.0
 
     @nn.compact
     def __call__(self, x: ArrayLike, train: bool) -> Array:
@@ -213,13 +219,15 @@ class NeuralFieldPol(nn.Module):
             if i == self.skipat:
                 skip += x
         # Add skip connection and final output layer
-        x +=skip
+        x += skip
         x = dense_layer(self.outdim)(x)
         # Rescale outputs with final activations, where
         # x[...,0] = linear pol. fraction ml
         # x[...,1] = sin(2xi)
         # x[...,2] = cos(2xi)
-        x = x.at[..., 0].set(nn.sigmoid(x[..., 0] - self.outshift) * 0.75)
+        x = x.at[..., 0].set(
+            nn.sigmoid(x[..., 0] - self.outshift) * self.scaling_ml
+        )
         x = x.at[..., 1].set((nn.sigmoid(x[..., 1]) - 0.5) * 2)
         x = x.at[..., 2].set((nn.sigmoid(x[..., 2]) - 0.5) * 2)
         return x
@@ -330,7 +338,7 @@ class PhaseGains(nn.Module):
         gi = self.clipping(gains[i, frames.reshape(-1, 1)])
         gj = self.clipping(gains[j, frames.reshape(-1, 1)])
         return gi, gj
-    
+
 class _ComplexGains(nn.Module):
     """Train a multi-dimensional parameter as complex gains.
 

@@ -49,3 +49,4 @@ nposenc: [4, 0, 0]
 depth: 6
 width: 256
 outshift: 10
+scaling_i: 1
